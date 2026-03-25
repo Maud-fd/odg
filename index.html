@@ -85,7 +85,7 @@
                 <i data-lucide="zap" class="text-accent w-6 h-6"></i>
                 <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">01. Le principe physique</h2>
             </div>
-            <section>
+            
             
             
             <div class="mb-8 p-5 bg-slate-50 border-l-4 border-accent rounded-r-lg shadow-sm font-sans">
@@ -175,9 +175,10 @@
                     <div class="flex items-center gap-2 mb-4 text-accent font-sans"><i data-lucide="shield"></i><h3 class="font-bold">Hypothèses du modèle</h3></div>
                     <ul class="space-y-3 text-sm list-disc pl-4">
                         <li>1 seul mur en contact avec l'extérieur.</li>
+                        <li>La température est homogène dans la pièce.</li>
                         <li>Les autres parois sont calorifugées (parfaitement isolées).</li>
-                        <li>On néglige la radiation de l'ordinateur.</li>
-                        <li>Modèle de déperdition statique sans renouvellement d'air.</li>
+                        <li>On néglige la radiation de corps noir de l'ordinateur.</li>
+                        <li>Modèle en régime stationnaire sans renouvellement d'air.</li>
                         <li>Il n'y a que des ordinateurs allumés en fonctionnement dans la pièce (pas d'humain).</li>
                         <li>On néglige lors de la résistance équivalente les résistances dues à la loi de Newton (convection).</li>
                     </ul>
@@ -404,7 +405,7 @@
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="dash-card p-6 rounded-xl bg-white">
                     <h3 class="text-accent text-xs font-bold uppercase tracking-widest mb-4 font-sans">Équation Différentielle</h3>
-                    <p class="text-slate-600 text-sm mb-2">Variation d'énergie interne ($\Delta U$) nécessaire pour chauffer l'air (assimilé à un gaz parfait, suposée à volume constant car on se place dans un système fermé) durant une période :</p>
+                    <p class="text-slate-600 text-sm mb-2">Variation d'énergie interne ($\Delta U$) nécessaire pour chauffer l'air (assimilé à un gaz parfait diatomique : $\gamma = 1.4$ , suposé à volume constant car on se place dans un système fermé) durant une période :</p>
                     <div class="dash-math text-sm mb-4 overflow-x-auto">
                         \[ \Delta U = \int\limits_{T_i}^{T_f} m c_v \, dT \]
                     </div>
