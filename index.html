@@ -83,7 +83,15 @@
         <section>
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
                 <i data-lucide="zap" class="text-accent w-6 h-6"></i>
-                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">01. Le Principe Physique</h2>
+                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">01. Le principe physique</h2>
+            </div>
+            <section>
+            
+            
+            <div class="mb-8 p-5 bg-slate-50 border-l-4 border-accent rounded-r-lg shadow-sm font-sans">
+                <p class="text-slate-700 leading-relaxed">
+                    Nous allons diviser ce problème en 2 étapes. Dans un premier temps (parties 1 à 5), nous chercherons à calculer la puissance nécessaire pour <strong>maintenir</strong> la pièce à une température idéale constante (régime stationnaire). Nous verrons en partie 6 l'énergie nécessaire pour <strong>chauffer</strong> cette pièce en partant d'une température froide en un temps donné (régime transitoire).
+                </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -109,7 +117,7 @@
         <section>
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
                 <i data-lucide="battery-charging" class="text-accent w-6 h-6"></i>
-                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">02. Estimation de la Puissance d'un Ordinateur Portable</h2>
+                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">02. Estimation de la puissance d'un ordinateur portable</h2>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -344,7 +352,7 @@
         <section>
             <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
                 <i data-lucide="monitor" class="text-accent w-6 h-6"></i>
-                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">05. Profils de Dissipation et résultats</h2>
+                <h2 class="text-2xl font-bold text-primary tracking-wider font-sans">05. Profils de dissipation et résultats</h2>
                 <span class="ml-4 text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full border border-slate-200 font-sans font-medium">Sélectionnez un profil</span>
             </div>
             
@@ -374,17 +382,7 @@
                         <span class="text-4xl font-bold text-slate-400 block leading-none">PC</span>
                         <span class="text-[10px] font-bold text-slate-500 tracking-widest uppercase" x-text="'Basé sur ' + tdp + 'W'"></span>
                     </div>
-                </div>
-                <div class="mt-8 space-y-2 text-right border-t border-slate-200 pt-4">
-                    <div class="flex justify-between text-sm">
-                        <span class="text-slate-500 font-semibold">Puissance requise</span>
-                        <span class="mono-text font-bold" x-text="Math.round(p_pertes()) + ' W'"></span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-slate-500 font-semibold">Puissance déployée</span>
-                        <span class="text-accent mono-text font-bold" x-text="(Math.ceil(p_pertes() / tdp) * tdp) + ' W'"></span>
-                    </div>
-                </div>
+                
             </div>
 
         </section>
@@ -406,11 +404,11 @@
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="dash-card p-6 rounded-xl bg-white">
                     <h3 class="text-accent text-xs font-bold uppercase tracking-widest mb-4 font-sans">Équation Différentielle</h3>
-                    <p class="text-slate-600 text-sm mb-2">Variation d'énergie interne ($\Delta U$) nécessaire pour chauffer l'air sur la période :</p>
+                    <p class="text-slate-600 text-sm mb-2">Variation d'énergie interne ($\Delta U$) nécessaire pour chauffer l'air (assimilé à un gaz parfait, suposée à volume constant car on se place dans un système fermé) durant une période :</p>
                     <div class="dash-math text-sm mb-4 overflow-x-auto">
-                        \[ \Delta U = \int\limits_{T_i}^{T_f} m c_p \, dT \]
+                        \[ \Delta U = \int\limits_{T_i}^{T_f} m c_v \, dT \]
                     </div>
-                    <p class="text-slate-600 text-sm mb-2">En introduisant la capacité thermique $C = m c_p$ ( $m=\rho_{air} \times V_{pièce}$), on obtient le bilan de puissance :</p>
+                    <p class="text-slate-600 text-sm mb-2">En introduisant la capacité thermique $C = m c_v$ ( $m=\rho_{air} \times V_{pièce}$), on obtient le bilan de puissance :  $\Delta U = -P_{th} + P_{elec}$ c'est-à-dire :</p>
                     <div class="dash-math text-sm mb-4 overflow-x-auto">
                         \[ P_{\text{élec}} = P_{\text{th perdue}} + C \frac{dT_{int}}{dt} \]
                     </div>
@@ -435,8 +433,13 @@
                     <div class="bg-slate-50 p-6 border border-slate-200 rounded-xl">
                         <h4 class="text-slate-700 text-xs font-bold uppercase mb-4 tracking-widest font-sans border-b border-slate-200 pb-2">Application Numérique</h4>
                         <ul class="text-sm text-slate-600 space-y-2 mb-6 grid grid-cols-2 font-mono">
+                            <li>$\rho_{air} = 1{,}2 \, \mathrm{kg \cdot m^{-3}}$</li>
+                            <li>$c_p = 1000 \, \mathrm{J \cdot kg^{-1} \cdot K^{-1}}$</li>
+                            <li class="col-span-2 overflow-x-auto whitespace-nowrap py-1">
+                                $c_v = \frac{c_p}{\gamma} = \frac{1000}{1{,}4} \approx 700 \, \mathrm{J \cdot kg^{-1} \cdot K^{-1}}$
+                            </li>
                             <li>$V = 30 \, m^3$</li>
-                            <li>$C = 3 \cdot 10^4 \, J/K$</li>
+                            <li>$C = 25 \cdot 10^3 \, J/K$</li>
                             <li>$T_{ext} = 5^\circ C$</li>
                             <li>$T_i = 10^\circ C$</li>
                             <li>$T_f = 20^\circ C$</li>
@@ -446,11 +449,11 @@
                         <div class="text-center bg-white p-4 rounded border border-slate-200 shadow-sm">
                             <div class="text-slate-500 mb-1 font-mono text-sm uppercase tracking-wider">Résultat</div>
                             <div class="font-mono text-lg text-primary">
-                                $P_{\text{élec}} \approx$ <span class="text-accent font-black text-3xl">133 W</span>
+                                $P_{\text{élec}} \approx$ <span class="text-accent font-black text-3xl">119 W</span>
                             </div>
                             <div class="text-xs text-slate-500 mt-3 pt-3 border-t border-slate-100 font-sans">
                                 Matériel pour chauffer cet air : <br>
-                                <span class="text-primary font-bold text-lg" x-text="Math.ceil(133 / tdp)"></span> PC(s) de <span class="text-accent font-semibold" x-text="tdp + 'W'"></span>
+                                <span class="text-primary font-bold text-lg" x-text="Math.ceil(119 / tdp)"></span> PC(s) de <span class="text-accent font-semibold" x-text="tdp + 'W'"></span>
                             </div>
                         </div>
                     </div>
@@ -499,7 +502,7 @@
                                             <span class="font-mono text-xs bg-slate-50 px-2 py-1 rounded border border-slate-100">$h_e = 30 \, \mathrm{W \cdot m^{-2} \cdot K^{-1}}$</span>
                                         </li>
                                     </ul>
-                                    <p class="text-xs text-slate-400 italic">Valeurs de $h$ issues du chapitre 11 du cours de 2A.</p>
+                                    <p class="text-xs text-slate-400 italic">Valeurs de $h$ issues du chapitre 11 du cours de 2A. h est plus élévé à l'extérieur car on suppose un minimum de vent, plus de "courant d'air" dehors que dans la pièce.</p>
                                 </div>
                                 <div class="pt-4 border-t border-slate-100 mt-4">
                                     <p class="text-sm text-slate-600 leading-relaxed">
@@ -523,7 +526,7 @@
             <div class="theory-box">
                 <h3 class="text-lg font-bold text-primary mb-4 font-sans">Dans une situation classique, qu'obtient-on ?</h3>
                 <div class="space-y-4 text-sm leading-relaxed text-slate-700">
-                    <p>Avec des paramètres moyens (une chambre de $12 \, \text{m}^2$, des fenêtres et murs isolés normalement, une température extérieure de 5 degrés, des PC en utilisation classique), on obtient environ 5 ordinateurs portables pour maintenir la pièce à 20 degrés.</p>
+                    <p>Avec des paramètres ordinaires (une chambre de $12 \, \text{m}^2$, des fenêtres et murs isolés normalement, une température extérieure de 5 degrés, des PC en utilisation classique), on obtient environ 5 ordinateurs portables pour maintenir la pièce à 20 degrés.</p>
                 </div>
             </div>
         </section>
